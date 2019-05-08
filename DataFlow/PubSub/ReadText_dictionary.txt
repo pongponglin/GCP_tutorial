@@ -1,0 +1,2 @@
+{'col1':'String', 'col2':54321, 'col3':'I am UTF-8'}
+{'col1':'sTRING', 'col2':12345, 'col3':'BIG5 and I'}
