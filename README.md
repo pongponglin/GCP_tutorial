@@ -13,11 +13,11 @@
 
 - NLPapi.py: Entities Analysis. Give context and return Dataframe with words, types, and salience columns.
 
-------
-
 ## BigQuery
+```ruby
 from google.cloud import bigquery
 from google.cloud.bigquery import Dataset
+```
 
 ### querying data from BigQuery
 client = bigquery.Client(project= project_id)
@@ -31,6 +31,7 @@ query_job = client.query(query, location = "US") # Must match the destination da
 
 ### input data to BigQuery
 #### create a table on bq
+```ruby
 client = bigquery.Client(project= project_id)
 dataset_ref = client.dataset(dataset_name)
 table_ref = dataset_ref.table('inserttable')
@@ -50,13 +51,17 @@ rows_to_insert = [
     (u'Wylma Phlyntstone', 29),
 ]
 client.insert_rows(gettable, rows_to_insert)
+```
 
 #### to_gbq
+```ruby
 import pandas as pd
 label_compare = pd.read_csv('traingLabel_comparison.csv',encoding = "utf-8")
 to_gbq(label_compare, bigquery_table, project_id, if_exists='replace')
+```
 
 #### upload a local file to bq
+```ruby
 client = bigquery.Client(project= project_id)
 dataset_ref = client.dataset(dataset_name)
 table_ref = dataset_ref.table('sampletable')
@@ -84,8 +89,7 @@ with open(filename, 'rb') as source_file:
         table_ref,
         location='US',  # Must match the destination dataset location.
         job_config=job_config)
-
--------
+```
 
 ## DataFlow
 
