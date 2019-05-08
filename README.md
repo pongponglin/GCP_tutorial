@@ -20,6 +20,7 @@ from google.cloud.bigquery import Dataset
 ```
 
 ### querying data from BigQuery
+```ruby
 client = bigquery.Client(project= project_id)
 dataset_ref = client.dataset(dataset_name)
 table_ref = dataset_ref.table('test_table10')
@@ -28,9 +29,10 @@ query = (
     'FROM `testdataset.test_table10`'
     'WHERE mac = "d4:38:9c:6d:f5:01"')
 query_job = client.query(query, location = "US") # Must match the destination dataset location.
+```
 
 ### input data to BigQuery
-#### create a table on bq
+- **create a table on bq**
 ```ruby
 client = bigquery.Client(project= project_id)
 dataset_ref = client.dataset(dataset_name)
@@ -41,8 +43,10 @@ schema = [
 ]
 table = bigquery.Table(table_ref, schema=schema)
 table = client.create_table(table)   # API request
+```
 
-#### insert rows into table on bq
+- **insert rows into table on bq**
+```ruby
 table_ref = dataset_ref.table('inserttable')
 gettable = client.get_table(table_ref)
 
@@ -53,14 +57,14 @@ rows_to_insert = [
 client.insert_rows(gettable, rows_to_insert)
 ```
 
-#### to_gbq
+- **to_gbq**
 ```ruby
 import pandas as pd
 label_compare = pd.read_csv('traingLabel_comparison.csv',encoding = "utf-8")
 to_gbq(label_compare, bigquery_table, project_id, if_exists='replace')
 ```
 
-#### upload a local file to bq
+- **upload a local file to bq**
 ```ruby
 client = bigquery.Client(project= project_id)
 dataset_ref = client.dataset(dataset_name)
