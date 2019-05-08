@@ -4,7 +4,7 @@
 from google.cloud import bigquery
 from google.cloud.bigquery import Dataset
 
-project_id = "ixq-web"
+project_id = "web"
 dataset_name = "nicoledataset"
 client = bigquery.Client(project= project_id)
 dataset_ref = client.dataset(dataset_name)

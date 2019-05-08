@@ -1,11 +1,11 @@
-### upload Bigquery table from a file
+### upload a local file to Bigquery table 
 ### Author: Nicole
 
 from google.cloud import bigquery
 from google.cloud.bigquery import Dataset
 import pandas
 
-project_id = "ixq-web"
+project_id = "web"
 dataset_name = "nicoledataset"
 client = bigquery.Client(project= project_id)
 dataset_ref = client.dataset(dataset_name)
@@ -27,7 +27,7 @@ job_config.source_format = bigquery.SourceFormat.CSV
 job_config.skip_leading_rows = 1
 job_config.autodetect = True
 
-filename = "/Users/apple/nicole/aiii/GCP_tutorial/BigQuery/sample.csv"
+filename = "/Users/apple/nicole/sample.csv"
 with open(filename, 'rb') as source_file:
     job = client.load_table_from_file(
         source_file,

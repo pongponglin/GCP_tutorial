@@ -2,7 +2,7 @@ from google.cloud import bigquery
 from pandas.io.gbq import *
 import pandas as pd
 
-project_id = "chinatrust-bot"
+project_id = "bot"
 bigquery_table = "crawling.label_compare"
 label_compare = pd.read_csv('traingLabel_comparison.csv',encoding = "utf-8")
 
