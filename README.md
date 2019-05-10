@@ -95,10 +95,41 @@ with open(filename, 'rb') as source_file:
         job_config=job_config)
 ```
 
-## DataFlow
-
-## Dataframe
-
 ## Storage
+```ruby
+from google.cloud import storage
+```
 
-## Firebase
+### upload 
+- confirm the buckit name on Storage
+```ruby
+bucket_name = 'project-187007.appspot.com' 
+destination_blob_name = 'test/pic.jpg' # location of file on Storage
+source_file_name = '/Users/apple/nicole/pic0.jpg' # lacal file
+#### upload a local file #########
+storage_client = storage.Client()
+bucket = storage_client.get_bucket(bucket_name)
+# 上傳一個全新的blob
+uploadBlob = bucket.blob(destination_blob_name)
+uploadBlob.upload_from_filename(source_file_name)
+
+##### upload string as file ########
+destination_blob_name = '{0}.txt'.format("testfile")
+string = "測試檔案:文字內容"
+uploadBlob = bucket.blob(destination_blob_name)
+uploadBlob.upload_from_string(string)
+
+```
+
+### download
+```ruby
+bucket_name = 'project-ai-187007.appspot.com'
+destination_blob_name = 'ig_picture/11024107_838713289520944_1923731223_n.jpg'
+download_file_name = '/Users/apple/nicole/IXQ/IXQ_code/1223.jpg'
+#############
+storage_client = storage.Client()
+bucket = storage_client.get_bucket(bucket_name)
+blob = bucket.blob(destination_blob_name)
+blob.download_to_filename(download_file_name)
+
+```
