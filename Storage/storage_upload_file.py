@@ -3,9 +3,10 @@
 from google.cloud import storage
 
 ### set #####
-bucket_name = 'project-ai-187007.appspot.com'
-destination_blob_name = 'test/pic.jpg'
-source_file_name = '/Users/apple/nicole/IXQ/EUR_pic/eiffertower/pic0.jpg'
+# confirm the buckit name on Storage
+bucket_name = 'project-187007.appspot.com' 
+destination_blob_name = 'test/pic.jpg' # location of file on Storage
+source_file_name = '/Users/apple/nicole/pic0.jpg' # lacal file
 #############
 
 storage_client = storage.Client()
