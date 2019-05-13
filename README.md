@@ -2,7 +2,22 @@
 **python**
 
 ## Finish Certification first
+https://console.cloud.google.com/apis/credentials
 
+### 1.Service Account Key
+Enable server-to-server, app-level authentication using robot account
+
+- Create cerdentials -> `Service account key`
+- choose`App Engine defalut service account`
+連動到Bigquery必須有較強的 Service account
+- create 後會下載一個json檔， ex:web-4e4a64c233ca.json
+- 通過 google account 認證
+
+#### 在程式碼裡裝上傳金鑰
+- 將金鑰的json file放置在專案資料夾中
+```
+os.environ['GOOGLE_APPLICATION_CREDENTIALS']='/Users/apple/Downloads/aiii-web-4e4a64c233ca.json'
+```
 
 -----
 
